@@ -1,0 +1,111 @@
+{% extends "catan/base_template.html" %}
+{% load static %}
+{% block title %}
+	catan - {{lobby.title}}
+{% endblock title %}
+{% block js %}
+	{{ block.super }}
+	<script type="text/javascript" src="{% static "catan/libraries/p5.min.js" %}"></script>
+	<script type="text/javascript" src="{% static "catan/libraries/p5.dom.js" %}"></script>
+	<script type="text/javascript" src="{% static "catan/game/piece.js" %}"></script>
+	<script type="text/javascript" src="{% static "catan/game/hex.js" %}"></script>
+	<script type="text/javascript" src="{% static "catan/game/vert.js" %}"></script>
+	<script type="text/javascript" src="{% static "catan/game/board.js" %}"></script>
+	<script type="text/javascript" src="{% static "catan/game/main.js" %}"></script>
+	<script type="text/javascript" src="{% static "catan/game/build.js" %}"></script>
+{% endblock js %}
+
+{% block css %}
+	{{ block.super }}
+	<style type="text/css">
+		.red {background-color:red;}
+		.blue {background-color:blue;}
+		.orange {background-color:orange;}
+		.green {background-color:green;}
+		.white {background-color:white;}
+	</style>
+
+{% endblock css %}
+
+{# TODO Update #current_player to be the correct current player on page GET #}
+{% block brand %}
+	<a class="navbar-brand">{{lobby.title}}</a>
+{% endblock brand %}
+
+{% block navbarleftlist %}
+	<li><a href="{% url "catan:index" %}" class="navbar-link">home</a></li>
+{% endblock navbarleftlist %}
+
+{% block userindicator %}
+	<li class="navbar-text">
+		Current turn: <span class="badge {{currentplayer.color}}" id="current_player">{{currentplayer.name}}</span>
+	</li>
+	<li class="navbar-text">
+		{{player.name}}: <span class="badge {{player.color}}">{{player.order}}</span>
+	</li>
+{% endblock userindicator %}
+
+{% block content %}
+	<div class="container-fluid">
+		<div class="row-fluid">
+			{# board + chat #}
+			<div class="col-lg-8">
+				<div id="board" class="jumbotron" style="padding:5px;height:60%"></div>
+			</div>
+			<div class="col-lg-4 jumbotron" style="padding:5px;"> 
+				chat
+				<input type="text" name="chatinput">
+				<div class="well" id="chatarea">
+					foobar <br>
+					foobar <br>
+					foobar <br>
+				</div>
+			</div>
+		</div>
+		<div row-fluid>
+			{# hand + buttons #}
+			<div class="col-sm-10">
+				<div class="jumbotron" style="padding:5px;height:20%" id="hand"></div>
+			</div>
+			<div class="col-sm-2 jumbotron" style="padding:5px">  
+				<div class="btn btn-warning" id="trade" data-toggle="modal" data-target="#tradeModal">trade</div>
+				<div class="btn btn-warning" id="build" data-toggle="modal" data-target="#buildModal">build</div>
+				<div class="btn btn-danger" id="done">done</div>
+			</div>
+		</div>
+	</div>
+
+<div id="buildModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+		<div class="modal-content">
+		  	<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			<div class="modal-body">
+				{% include "catan/game/buildmodalcontent.html" %}
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		  	</div>
+		</div>
+
+	</div>
+</div>
+
+<div id="tradeModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+		<div class="modal-content">
+		  	<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			<div class="modal-body">
+				{% include "catan/game/trademodalcontent.html" %}
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		  	</div>
+		</div>
+
+	</div>
+</div>
+{% endblock content %}

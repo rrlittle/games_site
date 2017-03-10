@@ -1,0 +1,11 @@
+{% extends "blobio/base_template.html" %}
+{% load static %}
+{% block js %}
+	{{block.super}}
+	<script type="text/javascript" src="{% static "blobio/blobio/main.js" %}"></script>
+	<script type="text/javascript" src="{% static "blobio/blobio/socket.js" %}"></script>
+{% endblock js %}
+
+{% block content %}
+	<input type="hidden" id="lobby" value="{{lobby}}">	
+{% endblock content %}

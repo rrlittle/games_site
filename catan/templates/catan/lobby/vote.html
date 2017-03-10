@@ -1,0 +1,19 @@
+<style type="text/css">
+	label{
+		cursor: pointer;
+	}
+</style>
+<div class="panel panel-primary">
+	<div class="panel-heading"><strong>Vote For Game Version</strong></div>
+	<div class="panel-body">
+		<div class="btn-group" data-toggle="buttons" id="vote_list">
+		  {% for version in versions %}
+			  <label class="btn btn-default vote" id="vote-{{version}}"> 
+			    <input type="radio" 
+			    	name="vote" 
+			    	value="{{version}}"> {{version}}
+			  </label>
+		  {% endfor %}
+		</div>
+	</div>
+</div>

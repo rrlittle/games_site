@@ -1,0 +1,14 @@
+{% extends "p5js/base_game.html" %}
+{% load static %}
+
+{% block title %}
+	blob.io
+{% endblock title %}
+
+{% block js %}
+	{{block.super}}
+	<script type="text/javascript" src="{% static "p5js/blobio/main.js" %}"></script>
+	<script type="text/javascript" src="{% static "p5js/blobio/blob.js" %}"></script>
+	
+{% endblock js %}
+

@@ -1,0 +1,17 @@
+{% extends "p5js/base_game.html" %}
+{% load static %}
+
+{% block title %}
+	natac
+{% endblock title %}
+
+{% block js %}
+	{{block.super}}
+	<script type="text/javascript" src="{% static "p5js/natac/main.js" %}"></script>
+	<script type="text/javascript" src="{% static "p5js/natac/resources/resources.js" %}"></script>
+	<script type="text/javascript" src="{% static "p5js/natac/board.js" %}"></script>
+	<script type="text/javascript" src="{% static "p5js/natac/pieces.js" %}"></script>
+
+	
+{% endblock js %}
+

@@ -1,0 +1,17 @@
+<div class="panel panel-primary">
+	<div class="panel-heading"><strong>Your Games</strong></div>
+	<div class="panel-body">
+		<ul class="list-group" id="your_games">
+			{% if your_games %}
+				{% for game in your_games %}
+					<li class="list-group-item"> 
+						<a href="{% url "catan:game" game.id %}">
+							{{game}}
+						</a>
+					</li>
+				{% endfor %}
+			{% else %} No Games Available
+			{% endif %}
+		</ul>
+	</div>
+</div>

@@ -1,0 +1,24 @@
+{% extends "goodchat/base.html" %}
+{% load static %}
+{% block title %}goodchat{% endblock%}
+
+{% block extra_head %}
+	<script src="{% static "goodchat/goodchat.js" %}" type="text/javascript"></script>
+{% endblock extra_head %}
+
+{% block content %}
+	<ul class="rooms">
+		{% for room in rooms %}
+			<li><button class="room-link" data-room-id="{{ room.id }}">{{ room }}</button></li>
+		{% empty %}
+			<p class="empty">No chat rooms defined. Maybe make some in the admin?</p>
+		{% endfor %}
+	</ul>
+	
+	<div id="chats"></div>
+
+
+{% endblock content %}
+
+	
+	

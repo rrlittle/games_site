@@ -1,0 +1,32 @@
+{% load static %}
+<head>
+	{% block favicon %}
+	  <link rel="shortcut icon" type="image/x-icon" href="{% static "blobio/favicon.ico" %}" />
+	{% endblock favicon %}
+   	
+   	<title>{% block title %}blobio{% endblock %}</title>
+
+   	{% block js %}  
+        <script type="text/javascript" src="{% static "blobio/jquery.min.js" %}"></script>
+        <script type="text/javascript" src="{% static "blobio/tether/js/tether.min.js" %}"></script>
+        <script type="text/javascript" src="{% static "blobio/bootstrap/js/bootstrap.min.js" %}"></script>
+        <script type="text/javascript" src="{% static "p5js/p5.min.js" %}"></script>
+   	{% endblock js %}
+
+   	{% block css %}
+   		<link rel="stylesheet" type="text/css" href="{% static "blobio/bootstrap/css/bootstrap-theme.min.css" %}">
+   		<link rel="stylesheet" type="text/css" href="{% static "blobio/bootstrap/css/bootstrap.min.css" %}">
+   		<link rel="stylesheet" type="text/css" href="{% static "blobio/tether/css/tether.min.css" %}">
+   	{% endblock css %}
+
+
+</head>
+<body>
+    {% block content %}
+    {% endblock content %}
+</body>
+
+<footer>
+	{% block footer %}
+	{% endblock footer %}
+</footer>

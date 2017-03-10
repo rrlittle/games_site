@@ -1,0 +1,17 @@
+{% load static %}
+
+<head>
+    <title>{% block title %}foo{% endblock %}</title>
+    <meta charset="UTF-8">
+	<script src="{% static "goodchat/jquery-1.12.2.min.js" %}" type="text/javascript"></script>
+	<script src="{% static "goodchat/reconnecting-websocket.min.js" %}" type="text/javascript"></script>
+	{% block extra_head %}{% endblock %}
+</head>
+<body>
+	{% block content %}
+		
+	{% endblock content %}
+	{% block extracontent %}
+		
+	{% endblock extracontent %}
+</body>

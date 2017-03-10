@@ -1,0 +1,60 @@
+{% load static %}
+<head>
+	{% block favicon %}
+	  <link rel="shortcut icon" type="image/x-icon" href="{% static "catan/favicon.ico" %}" />
+	{% endblock favicon %}
+	
+	<title>{% block title %}Catan{% endblock %}</title>
+
+	{% block js %}  
+		 <script type="text/javascript" src="{% static "catan/libraries/jquery.min.js" %}"></script>
+		 <script type="text/javascript" src="{% static "catan/libraries/bootstrap/js/bootstrap.min.js" %}"></script>
+		 <script type="text/javascript" src="{% static "catan/libraries/reconnecting-websocket.min.js" %}"></script>
+	{% endblock js %}
+
+	{% block css %}
+		<link rel="stylesheet" type="text/css" href="{% static "catan/libraries/bootstrap/css/bootstrap.min.css" %}">
+		<link rel="stylesheet" type="text/css" href="{% static "catan/libraries/bootstrap/css/bootstrap-theme.min.css" %}">
+	{% endblock css %}
+
+</head>
+<body>
+	<nav class="navbar navbar-default bg-primary">
+		<div class="container-fluid">
+			<div class="havbar-header">
+				{% block brand %}
+					<a href="{% url "catan:index" %}" class="navbar-brand">Catan</a>
+				{% endblock brand %}
+			</div>
+				<ul class="nav navbar-nav">
+					{% block navbarleftlist %}
+					{% endblock navbarleftlist %}
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					{% block navbarrightlist %}
+					
+					{% endblock navbarrightlist %}
+					{% if user.is_authenticated %}
+							{% block userindicator %}
+								<li class="navbar-text">welcome {{user.username.title}}</li>
+							{% endblock userindicator %}
+						<li><a href="{% url "catan:logout" %}">log out</a></li>
+					{% else %}
+						<form class="navbar-form" action="{% url "catan:login" %}" method="POST">
+						  <div class="form-group">
+						    {% csrf_token %}
+	  						<input type="text" name="username" class="form-control" placeholder="username">
+							<input type="password" name="password" class="form-control" placeholder="password">
+							<button class="btn btn-default" type="submit">Login</button>
+						  </div>
+						</form>
+					{% endif %}
+				</ul>
+		</div>
+		
+	</nav>
+   {% block content %}
+   {% endblock content %}
+</body>
+
+	

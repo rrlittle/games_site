@@ -1,0 +1,15 @@
+{% extends "p5js/base_game.html" %}
+{% load static %}
+
+{% block title %}
+	hexs
+{% endblock title %}
+
+{% block js %}
+	{{block.super}}
+	<script type="text/javascript" src="{% static "p5js/hexs/main.js" %}"></script>
+	<script type="text/javascript" src="{% static "p5js/hexs/Cell.js" %}"></script>
+
+	
+{% endblock js %}
+

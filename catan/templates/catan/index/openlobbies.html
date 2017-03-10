@@ -1,0 +1,24 @@
+<style type="text/css">
+	.jumbotron {
+		padding:5px;
+	}
+</style>
+<div class="panel panel-primary">
+	<div class="panel-heading"><strong>Open Lobbies</strong></div>
+	<div class="panel-body">
+		<ul class="list-group" id="open_lobbies">
+			{% if open_lobbies %}
+				{% for lobby in open_lobbies %}
+					<li class="list-group-item">
+						<a href="{% url "catan:lobby" lobby.id %}"> 
+							{{lobby}}
+						</a>
+					</li>
+				{% endfor %}
+			{% else %} No Open Lobbies
+			{% endif %}
+		</ul>
+	</div>
+</div>
+<hr>
+<a href="{% url "catan:newlobby" %}">create a new lobby</a>

@@ -1,0 +1,17 @@
+<div class="panel panel-primary">
+	<div class="panel-heading"><strong>Your Lobbies</strong></div>
+	<div class="panel-body">
+		<ul class="list-group" id="your_lobbies">
+			{% if your_lobbies %}
+				{% for lobby in your_lobbies %}
+					<li class="list-group-item">
+						<a href="{% url "catan:lobby" lobby.id %}">
+					 		{{lobby}}
+						</a>
+					 </li>
+				{% endfor %}
+			{% else %} You haven't joined any lobbies
+			{% endif %}
+		</ul>
+	</div>
+</div>

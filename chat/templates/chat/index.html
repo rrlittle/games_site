@@ -1,0 +1,70 @@
+{% load static %}
+
+<head>
+	<title>{% block title %}example chatroom{% endblock %}</title>
+
+	<link href="{% static "chat/favicon.ico" %}" rel="icon" type="image/x-icon" />
+
+	<script type="text/javascript" src="{% static "chat/jquery.min.js" %}"></script>
+	<script type="text/javascript" src="{% static "chat/tether/js/tether.min.js" %}"></script>
+	<script type="text/javascript" src="{% static "chat/bootstrap/js/bootstrap.min.js" %}"></script>
+	<script type="text/javascript" src="{% static "chat/chat.js" %}"></script>
+	<script src="{% static "goodchat/reconnecting-websocket.min.js" %}" type="text/javascript"></script>
+ 
+	<link rel="stylesheet" type="text/css" href="{% static "chat/bootstrap/css/bootstrap.min.css" %}">
+	<link rel="stylesheet" type="text/css" href="{% static "chat/bootstrap/css/bootstrap-grid.min.css" %}">
+</head>
+{# this page is an example chatpage that allows you to specify a chatroom then connect #}
+{# important bits. ; #}
+{# #connect is a form that handles connecting #}
+{# #post is a form that handles submitting a message #}
+{# #textbody is a div where messages get appended #}
+<body>
+	<form action="" class="form form-horizontal" id="connect">
+		<div class="input-group col-sm-8">
+		  	<span class="input-group-addon" id="addon">Welcome User to </span>
+		  	<input type="text" class="form-control" placeholder="Chatroom" aria-describedby="addon" id="room">
+		</div>
+		<div class="col-sm-2">
+			<button class='btn btn-primary center-block' >
+				Connect
+			</button>
+		</div>
+	</form>
+	<br/>
+	<br/>
+	<br/>
+	<div id="textbody"></div>
+</body>         
+
+<style type="text/css">
+	/* Sticky footer styles
+	-------------------------------------------------- */
+	html {
+		position: relative;
+		min-height: 100%;
+	}
+	.footer {
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		/* Set the fixed height of the footer here */
+		/*height: 60px;*/
+		background-color: #f5f5f5;
+	}
+</style>
+<footer class="footer">
+<form action="" class="form form-horizontal" id="post">
+	{# {% csrf_token %} #}
+	<div class="form-group">
+		<div class="col-sm-8">
+			<input type="text" class="form-control" placeholder="message" id="message">
+		</div>
+		<div class="col-sm-2">
+			<button class='btn btn-primary center-block' >
+				Submit
+			</button>
+		</div>
+	</div>
+</form>
+</footer>

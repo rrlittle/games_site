@@ -1,0 +1,28 @@
+{% load static %}
+<head>
+	{% block favicon %}
+	  <link rel="shortcut icon" type="image/x-icon" href="{% static "p5js/favicon.ico" %}" />
+	{% endblock favicon %}
+   	
+   	<title>{% block title %}p5js showcase{% endblock %}</title>
+
+   	{% block js %}  
+         <script type="text/javascript" src="{% static "p5js/jquery.min.js" %}"></script>
+         <script type="text/javascript" src="{% static "p5js/tether/js/tether.min.js" %}"></script>
+         <script type="text/javascript" src="{% static "p5js/bootstrap/js/bootstrap.min.js" %}"></script>
+   	{% endblock js %}
+
+   	{% block css %}
+   		<link rel="stylesheet" type="text/css" href="{% static "p5js/bootstrap/css/bootstrap.min.css" %}">
+   		<link rel="stylesheet" type="text/css" href="{% static "p5js/bootstrap/css/bootstrap-flex.min.css" %}">
+   		<link rel="stylesheet" type="text/css" href="{% static "p5js/bootstrap/css/bootstrap-grid.min.css" %}">
+   		<link rel="stylesheet" type="text/css" href="{% static "p5js/bootstrap/css/bootstrap-reboot.min.css" %}">
+   	{% endblock css %}
+
+      {% block content %}
+         
+      {% endblock content %}
+
+</head>
+
+

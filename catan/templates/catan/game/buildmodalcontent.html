@@ -1,0 +1,20 @@
+{% load static %}
+
+<div class="panel panel-primary">
+	<div class="panel-heading"><strong>Buildings</strong></div>
+	<div class="panel-body">
+		<div class="btn-group-vertical" id="buildings">
+			{% for building in buildings %}
+				<button type="button" class="btn btn-default btn-block building-btn" id="building-{{ building.id }}">
+				<span style="float:left" >{{building.name}}</span>
+				<span class="pull-right">
+					{% for cost in building.costs %}		
+						<img src="{% static cost.path %}" style="width:30px;height:30px">
+					{% endfor %}	
+				</span>
+				</button>
+				<div class="w-100"></div>
+			{% endfor %}		
+		</div>
+	</div>
+</div>
